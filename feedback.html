@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback and Rating</title>
+<style>
+            body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://media.istockphoto.com/id/1295114854/photo/empty-red-armchairs-of-a-theater-ready-for-a-show.jpg?s=612x612&w=0&k=20&c=0rDtwzMmLbqe_8GuGw2dpjkD0MsXGywJmdmg0jDbMxQ='); /* Replace 'background_image.jpg' with your image file path */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white; 
+	
+  }
+.plain h1 {
+      font-family: Algerian, sans-serif;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 4rem; 
+    }
+ #feedbackForm {
+     background-image:url('https://media.istockphoto.com/id/517897328/photo/beautiful-sky-with-white-cloud-background.webp?b=1&s=170667a&w=0&k=20&c=kDH_rxWr5uk7UlFIqTYnSTFZfKQC5wIhiIlZuNWd66E='); /* Setting background image */
+	    background-size:cover; /* Adjust as needed */
+	    bachground-position:center; /* Adjust as needed */
+
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    color: black;
+    font-size: 1.5rem;
+    margin: auto;  
+  }
+  /* Basic styling */
+  .rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+  }
+
+  .rating input {
+    display: none;
+  }
+
+  .rating label {
+    display: inline-block;
+    font-size: 4rem;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .rating label:before {
+    content: '\2605';
+  }
+
+  .rating input:checked ~ label {
+    color: #f90;
+  }
+
+  .rating:hover label:before,
+  .rating:hover input:checked ~ label:before {
+    content: '\2605';
+    color: #f90;
+  }
+</style>
+</head>
+<body>
+ <div class="plain">
+<h1>FEEDBACK AND RATING</h1>
+<form id="feedbackForm" action="submit_feedback.php" method="POST" onsubmit="return submitFeedback()">
+  <p>PLEASE RATE OUR SERVICE</p>
+  <div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5"></label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4"></label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3"></label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2"></label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1"></label>
+  </div>
+
+  <p>LEAVE US YOUR FEEDBACK</p>
+  <textarea id="feedbackText" name="feedback" rows="4" cols="50"></textarea>
+
+  <button type="SUBMIT">SUBMIT</button>
+</form>
+
+<script>
+  function submitFeedback() {
+    // Simulate submission, you can replace it with actual submission code
+    alert("Feedback submitted successfully you can leave this page!");
+    // Redirect to another page after successful submission
+    window.location.href = "homepage.html";
+    return false; // Prevent form from submitting normally
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <!-- Google Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /* Your existing CSS styles here */
+    /* Additional styles for payment section */
+    body {
+      font-family: Arial, sans-serif; /* Setting font family */
+      background-image:url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1710979200&semt=ais'); /* Setting background image */
+      background-size:cover; /* Adjust as needed */
+      background-position:center; /* Adjust as needed */
+      margin: 0; /* Removing default margin */
+      padding: 20px; /* Adding padding */
+      text-align: center; /* Centering text */
+    }
+    .payment {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .payment h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .payment-options {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .payment-options label {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .upi-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .upi-options label {
+      margin-bottom: 10px;
+    }
+    .card-details {
+      display: none;
+      margin-top: 20px;
+    }
+    .card-details h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .card-details input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .price button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .price button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="tickets">
+      <!-- Your existing ticket booking interface here -->
+      <!-- ... -->
+
+      <!-- Payment Section -->
+      <div class="payment">
+        <h2>Select Payment Method:</h2>
+        <div class="payment-options">
+          <label><input type="radio" name="paymentMethod" value="cash" checked> Cash on Onsite</label>
+          <label><input type="radio" name="paymentMethod" value="upi"> UPI</label>
+          <div class="upi-options" style="display: none;">
+            <label><input type="radio" name="upiOption" value="gpay"> Google Pay</label>
+            <label><input type="radio" name="upiOption" value="phonepe"> PhonePe</label>
+          </div>
+          <label><input type="radio" name="paymentMethod" value="card"> Card</label>
+        </div>
+        <div class="card-details">
+          <h3>Card Details:</h3>
+          <input type="text" placeholder="Card Number" id="cardNumber">
+          <input type="text" placeholder="Expiration Date (MM/YY)" id="expirationDate">
+          <input type="text" placeholder="CVV" id="cvv">
+        </div>
+      </div>
+
+      <!-- Payment Button -->
+      <div class="price">
+        <button type="button" onclick="processPayment()">Proceed to Payment</button>
+      </div>
+
+      <!-- Bill Section -->
+      <div class="bill" id="billSection" style="display: none;">
+        <!-- Your existing bill details section here -->
+        <!-- ... -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Your existing JavaScript code here -->
+  <!-- ... -->
+
+  <script>
+    // Function to toggle display of card details based on selected payment method
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(function(el) {
+      el.addEventListener("change", function() {
+        if (this.value === "card") {
+          document.querySelector('.card-details').style.display = 'block';
+          document.querySelector('.upi-options').style.display = 'none';
+        } else if (this.value === "upi") {
+          document.querySelector('.upi-options').style.display = 'flex';
+          document.querySelector('.card-details').style.display = 'none';
+        } else {
+          document.querySelector('.upi-options').style.display = 'none';
+          document.querySelector('.card-details').style.display = 'none';
+        }
+      });
+    });
+
+    // Function to simulate payment processing
+    function processPayment() {
+      let selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+      if (selectedMethod === "upi") {
+        let selectedUpiOption = document.querySelector('input[name="upiOption"]:checked');
+        if (selectedUpiOption) {
+          // Placeholder for UPI payment processing
+          // Simulate successful payment
+          alert("UPI payment successful via " + selectedUpiOption.value);
+        } else {
+          alert("Please select a UPI option.");
+        }
+      } else if (selectedMethod === "cash") {
+        // Placeholder for cash payment processing
+        // Simulate successful booking
+        alert("Booked Successfully!");
+      } else {
+        // Placeholder for other payment methods
+        alert("Payment Successfully!");
+      }
+    }
+  </script>
+</body>
+</html>
